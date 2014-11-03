@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" monitorInterval="30"			>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>    
+    </Console>
+    <RollingFile name="RollingFile" fileName="/var/log/openstacksdk/openstacksdk.log"    
+                 filePattern="/var/log/openstacksdk/$${date:yyyy-MM}/openstacksdk-%d{MM-dd-yyyy}-%i.log.gz">    
+      <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>    
+      <SizeBasedTriggeringPolicy size="500 MB" />    
+    </RollingFile> 
+  </Appenders>
+  <Loggers>
+    <Root level="ALL">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="RollingFile"></AppenderRef>
+    </Root>
+  </Loggers>
+</Configuration>
