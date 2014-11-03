@@ -1,0 +1,10 @@
+#定义认证URL，这个非常重要，如果不定义，不能完成认证
+authURL = http://controller:5000/v2.0
+#是否开启缓存功能，开启缓存能够减少向服务器请求次数，提高效率，但注意同步问题，默认为true。
+isCached = true
+#是否开启延时加载，默认true，开启则不加载远程数据到本地，关闭则初始化session时，会把所有远程数据缓存到本地，要求cached必须为true！
+isLazy = true
+DBUrl = jdbc:mysql://controller:3306
+DBUsername = openstack
+DBPassword = openstack
+DBDriver = com.mysql.jdbc.Driver

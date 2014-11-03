@@ -1,0 +1,15 @@
+jcs.default=
+#-------------------- 默认cache属性 --------------------------------- #
+jcs.default.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.default.cacheattributes.MaxObjects=1000
+jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+#当设置UseMemoryShrinker值为true时，当超过MaxMemoryIdleTimeSeconds时间没有访问，则放入磁盘存储
+jcs.default.cacheattributes.UseMemoryShrinker=true
+jcs.default.cacheattributes.MaxMemoryIdleTimeSeconds=120
+jcs.default.cacheattributes.ShrinkerIntervalSeconds=60
+jcs.default.cacheattributes.MaxSpoolPerRun=500
+#---------------------默认存储对象属性 ------------------------------- #
+jcs.default.elementattributes=org.apache.jcs.engine.ElementAttributes
+# 默认对象不是永恒的，即会通过设置超时时间而被移除
+jcs.default.elementattributes.IsEternal=false
+jcs.default.elementattributes.MaxLifeSeconds=60
