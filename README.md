@@ -179,27 +179,14 @@ Step 4: 注册新功能
 public class Nova {
 	public final FlavorManager flavors;
 	public final HypervisorManager hypervisors;
-	public final ServiceManager services;
 	public final ServerManager servers;
 	public final KeyPairManager keypairs;
-	public final VersionManager versions;
-	public final LimitManager limits;
-	public final QuotaManager quotas;
-	public final AggregateManager aggregates;
-	public final SecurityGroupManager securityGroups;
-	private Authenticated credentical;
 	public Nova(Authenticated credentical) {
-		this.credentical = credentical;
+		// bad work, don't do that!!
 		flavors = new Flavors(credentical);
 		hypervisors = new Hypervisors(credentical);
-		services = new Services(credentical);
 		servers = new Servers(credentical);
 		keypairs = new KeyPairs(credentical);
-		versions = new Versions(credentical);
-		limits = new Limits(credentical);
-		quotas = new Quotas(credentical);
-		aggregates = new Aggregates(credentical);
-		securityGroups = new SecurityGroups(credentical);
 	}
 ```
 How to extend new features?
@@ -224,3 +211,9 @@ public class FlavorCachedManager implements FlavorManager {
 
 }
 ```
+Copyright
+=========
+
+1. 本项目的所有代码任何人都可以下载使用并且修改和重构!
+2. 任何人所做的修改必须继续公开到github，并且及时通知我！
+3. 对我的代码有任何意见，均可以通过邮箱告诉我！
