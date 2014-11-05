@@ -4,6 +4,7 @@ import bupt.openstack.authentication.Authenticated;
 import bupt.openstack.nova.api.AggregateManager;
 import bupt.openstack.nova.api.FlavorManager;
 import bupt.openstack.nova.api.HypervisorManager;
+import bupt.openstack.nova.api.ImageManager;
 import bupt.openstack.nova.api.KeyPairManager;
 import bupt.openstack.nova.api.LimitManager;
 import bupt.openstack.nova.api.QuotaManager;
@@ -13,6 +14,7 @@ import bupt.openstack.nova.api.VersionManager;
 import bupt.openstack.nova.api.v2.Aggregates;
 import bupt.openstack.nova.api.v2.Flavors;
 import bupt.openstack.nova.api.v2.Hypervisors;
+import bupt.openstack.nova.api.v2.Images;
 import bupt.openstack.nova.api.v2.KeyPairs;
 import bupt.openstack.nova.api.v2.Limits;
 import bupt.openstack.nova.api.v2.Quotas;
@@ -33,6 +35,7 @@ public class Nova {
 	public final QuotaManager quotas;
 	public final AggregateManager aggregates;
 	public final SecurityGroupManager securityGroups;
+	public final ImageManager images;
 	private Authenticated credentical;
 	public Nova(Authenticated credentical) {
 		this.credentical = credentical;
@@ -46,6 +49,7 @@ public class Nova {
 		quotas = new Quotas(credentical);
 		aggregates = new Aggregates(credentical);
 		securityGroups = new SecurityGroups(credentical);
+		images = new Images(credentical);
 	}
 	public void setRegion(String region) {
 		credentical.setWorkRegion(region);
