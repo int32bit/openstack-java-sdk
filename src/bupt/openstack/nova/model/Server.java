@@ -153,7 +153,16 @@ public class Server extends AbstractEntity {
 			securityGroups = new ArrayList<>();
 		this.securityGroups.addAll(securityGroups);
 	}
-
+	public void appendSecurityGroupsWithName(String name) {
+		if (this.securityGroups == null)
+			securityGroups = new ArrayList<>();
+		securityGroups.add(new Group(name));
+	}
+	public void appendSecurityGroup(SecurityGroup group) {
+		if (this.securityGroups == null)
+			securityGroups = new ArrayList<>();
+		securityGroups.add(new Group(group.getName()));
+	}
 	public String getDiskConfig() {
 		return diskConfig;
 	}
@@ -413,12 +422,12 @@ public class Server extends AbstractEntity {
 	}
 
 	public static class Group extends AbstractEntity {
-		/**
-	 * 
-	 */
 		private static final long serialVersionUID = -5598050879848859356L;
 
 		public Group() {
+		}
+		public Group(String name) {
+			this.name = name;
 		}
 		public Group(JSONObject entity) {
 			super(entity);
@@ -426,9 +435,6 @@ public class Server extends AbstractEntity {
 
 		public Group(Object obj) {
 			super(obj);
-		}
-		public Group(String s) {
-			super(s);
 		}
 		@Override
 		public boolean isValid() {
