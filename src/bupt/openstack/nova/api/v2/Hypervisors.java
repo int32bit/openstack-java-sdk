@@ -36,7 +36,7 @@ public class Hypervisors extends AbstractManager<Hypervisor> implements Hypervis
 		}
 		public Uptime uptime(String id) throws OperationException {
 			String api = "/os-hypervisors/%s/uptime";
-			return _get(String.format(api, id));
+			return _get(String.format(api, id), "hypervisor");
 		}
 	}
 	public static class Statistics extends AbstractManager<HypervisorStatistics> {

@@ -81,6 +81,7 @@ public class JSONConverter {
 	 * @return 返回转化后的对象实例
 	 */
 	public static <T extends AbstractEntity> T responseToEntity(String body, String what, Class<T> objClass, String region) {
+		//System.out.println(body);
 		/* 如果what未设置，使用注解设置的值 */
 		if (what == null) {
 			what = AnnotationProcessor.getEntityName(objClass);
