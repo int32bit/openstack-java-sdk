@@ -53,6 +53,7 @@ public class Snapshot extends AbstractEntity {
 	public String getDescription() {
 		return description;
 	}
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -65,6 +66,7 @@ public class Snapshot extends AbstractEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}

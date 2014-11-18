@@ -103,6 +103,7 @@ public abstract class AbstractEntity implements Serializable,JSONAble {
 	public String toIntervalString(int indent) {
 		return toIntervalJSONObject().toString(4);
 	}*/
+	@Override
 	public JSONObject toJSONObject() {
 		JSONObject meta = JSONConverter.EntityToJSON(this);
 		if (getClass().isMemberClass()) {

@@ -34,6 +34,7 @@ public class HTTPResponse implements Response{
 		this.data = data;
 		this.body = data.toString();
 	}
+	@Override
 	public byte[] getBytes() {
 		if (data == null) {
 			Objects.requireNonNull(body, "Failed to get content, you may call getInputStream()");

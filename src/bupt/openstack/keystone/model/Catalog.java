@@ -33,6 +33,7 @@ public class Catalog {
 		return json;
 		
 	}
+	@Override
 	public String toString() {
 		return toJSONObject().toString();
 	}

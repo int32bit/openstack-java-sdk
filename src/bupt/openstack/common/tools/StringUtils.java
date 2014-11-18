@@ -63,4 +63,10 @@ public class StringUtils {
 		ArgumentFormatter api= new ArgumentFormatter(s);
 		return api.format(mapper).get();
 	}
+	public static String getOrElse(String s, String defaultValue) {
+		if (isNotBlank(s)) {
+			return s;
+		}
+		return defaultValue;
+	}
 }

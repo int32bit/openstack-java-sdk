@@ -59,6 +59,7 @@ public class OpenstackHTTPClient  extends HTTPRequest implements AuthenticatedRe
 	public void setWorkRegion(String region) {
 		session.setWorkRegion(region);
 	}
+	@Override
 	public Set<String> getRegions() {
 		return session.getRegions();
 	}

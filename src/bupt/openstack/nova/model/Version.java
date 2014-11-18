@@ -7,8 +7,8 @@ import org.json.JSONObject;
 
 import bupt.openstack.common.annotation.Entity;
 import bupt.openstack.common.annotation.Property;
-import bupt.openstack.common.model.Link;
 import bupt.openstack.common.model.AbstractEntity;
+import bupt.openstack.common.model.Link;
 @Entity("Version")
 public class Version extends AbstractEntity {
 	/**

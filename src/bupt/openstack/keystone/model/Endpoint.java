@@ -49,6 +49,7 @@ public class Endpoint extends AbstractEntity {
 		return internalURL;
 	}
 
+	@Override
 	public String getRegion() {
 		return region;
 	}
@@ -77,6 +78,7 @@ public class Endpoint extends AbstractEntity {
 		this.internalURL = internalURL;
 	}
 
+	@Override
 	public void setRegion(String region) {
 		this.region = region;
 	}

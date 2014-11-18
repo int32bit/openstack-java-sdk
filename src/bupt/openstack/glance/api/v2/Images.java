@@ -32,6 +32,7 @@ public class Images extends AbstractManager<Image> {
 	public void delete(String id) throws OperationException {
 		_delete("/v2/images/" + id);
 	}
+	@Override
 	public Image create(Image image, InputStream data) throws OperationException {
 		Header header = new HTTPHeader();
 		if (StringUtils.isNotBlank(image.getName())) {
@@ -71,6 +72,7 @@ public class Images extends AbstractManager<Image> {
 			throw new OperationException("Failed to create image: %d:%s", response.getCode(),response.getBody());
 		}
 	}
+	@Override
 	public InputStream download(String id) throws OperationException {
 		Header header = new HTTPHeader();
 		header.put("Accept-Encoding", "gzip, deflate");

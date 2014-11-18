@@ -37,6 +37,7 @@ public abstract class AbstractHTTPRequest implements Request{
 		after();
 		return response;
 	}
+	@Override
 	public Response doGet(Header header, String url) throws IOException {
 		before(header);
 		Response response = get(url);
@@ -50,6 +51,7 @@ public abstract class AbstractHTTPRequest implements Request{
 		after();
 		return response;
 	}
+	@Override
 	public Response doPost(Header header, String url, Object data) throws IOException {
 		before(header);
 		Response response = post(url, data);
@@ -63,6 +65,7 @@ public abstract class AbstractHTTPRequest implements Request{
 		after();
 		return response;
 	}
+	@Override
 	public Response doPut(Header header, String url, Object data) throws IOException {
 		before(header);
 		Response response = put(url, data);
@@ -76,6 +79,7 @@ public abstract class AbstractHTTPRequest implements Request{
 		after();
 		return response;
 	}
+	@Override
 	public Response doDelete(Header header, String url) throws IOException {
 		before(header);
 		Response response = delete(url);

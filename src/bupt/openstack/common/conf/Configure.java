@@ -25,7 +25,7 @@ public class Configure {
 		this(System.getenv("OPENSTACK_CONF_PATH"));
 	}
 	private Configure(String configPath) {
-		this(new File(configPath + File.separator + "openstack.conf"));
+		this(new File(StringUtils.getOrElse(configPath, "/etc") + File.separator + "openstack.conf"));
 	}
 	private Configure(File configFile) {
 		Objects.requireNonNull(configFile);
