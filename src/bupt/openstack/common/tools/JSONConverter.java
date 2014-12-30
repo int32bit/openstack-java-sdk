@@ -20,9 +20,10 @@ public class JSONConverter {
 	/**
 	 * 把一个AbstractEntity（它的之类）实例转化成JSONObject表示形式
 	 * @param entity 需要转化的对象
+	 * @param colon 属性名包含冒号时，是否分隔，true为分隔，false不分隔
 	 * @return 该对象的JSONObject表示
 	 */
-	public static JSONObject EntityToJSON(AbstractEntity entity) {
+	public static JSONObject EntityToJSON(AbstractEntity entity, boolean colon) {
 		JSONObject json = new JSONObject();
 		/* 获取该对象的所有属性 */
 		Set<Field> fields = Reflector.getFields(entity);
@@ -34,7 +35,7 @@ public class JSONConverter {
 			if (name == null)
 				continue;
 			/* 处理属性名为 DDD:ddd的情况 */
-			if (name.indexOf(':') > 0) {
+			if (name.indexOf(':') > 0 && colon) {
 				name = name.split(":")[1];
 			}
 			Object value = null;

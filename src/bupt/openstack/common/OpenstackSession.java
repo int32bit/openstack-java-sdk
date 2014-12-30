@@ -10,6 +10,7 @@ import bupt.openstack.common.tools.DataBaseAccessor;
 import bupt.openstack.glance.Glance;
 import bupt.openstack.keystone.Keystone;
 import bupt.openstack.keystone.model.Secret;
+import bupt.openstack.neutron.Neutron;
 import bupt.openstack.nova.Nova;
 
 public class OpenstackSession {
@@ -22,6 +23,7 @@ public class OpenstackSession {
 	private final Glance glance;
 	private final Keystone keystone;
 	private final Cinder cinder;
+	private final Neutron neutron;
 	@SuppressWarnings("unused")
 	private final Configure configure;
 	/**
@@ -35,6 +37,7 @@ public class OpenstackSession {
 		this.glance = new Glance(credentical);
 		this.keystone = new Keystone(credentical);
 		this.cinder = new Cinder(credentical);
+		this.neutron = new Neutron(credentical);
 		this.availableTenants = DataBaseAccessor.getTenants(credentical.getUser().getName());
 	}
 	/**
@@ -52,6 +55,9 @@ public class OpenstackSession {
 	}
 	public Cinder getCinderClient() {
 		return cinder;
+	}
+	public Neutron getNeutronClient() {
+		return neutron;
 	}
 	/**
 	 * 切换region

@@ -1,6 +1,7 @@
 package bupt.openstack.keystone;
 
 import bupt.openstack.authentication.Authenticated;
+import bupt.openstack.common.Client;
 import bupt.openstack.common.OperationException;
 import bupt.openstack.keystone.api.EndpointManager;
 import bupt.openstack.keystone.api.RoleManager;
@@ -16,7 +17,7 @@ import bupt.openstack.keystone.api.v2.Tokens;
 import bupt.openstack.keystone.api.v2.Users;
 import bupt.openstack.keystone.model.Secret;
 
-public class Keystone {
+public class Keystone extends Client {
 	public final UserManager users;
 	public final RoleManager roles;
 	public final TokenManager tokens;
@@ -24,6 +25,7 @@ public class Keystone {
 	public final TenantManager tenants;
 	public final EndpointManager endpoints;
 	public Keystone(Authenticated credentical) {
+		super(credentical);
 		this.users = new Users(credentical);
 		this.roles = new Roles(credentical);
 		this.tokens = new Tokens(credentical);

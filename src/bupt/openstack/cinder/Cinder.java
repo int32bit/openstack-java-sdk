@@ -11,14 +11,16 @@ import bupt.openstack.cinder.api.v1.SnapshotManager;
 import bupt.openstack.cinder.api.v1.Types;
 import bupt.openstack.cinder.api.v1.Volumes;
 import bupt.openstack.cinder.model.Snapshots;
+import bupt.openstack.common.Client;
 
-public class Cinder {
+public class Cinder extends Client {
 	public final VolumeManager volumes;
 	public final VolumeTypeManager types;
 	public final ServiceManager services;
 	public final SnapshotManager snapshots;
 	public final LimitManager limits;
 	public Cinder(Authenticated credentical) {
+		super(credentical);
 		volumes = new Volumes(credentical);
 		types = new Types(credentical);
 		services = new Services(credentical);

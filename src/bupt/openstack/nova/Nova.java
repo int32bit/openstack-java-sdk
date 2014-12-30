@@ -1,6 +1,7 @@
 package bupt.openstack.nova;
 
 import bupt.openstack.authentication.Authenticated;
+import bupt.openstack.common.Client;
 import bupt.openstack.nova.api.AggregateManager;
 import bupt.openstack.nova.api.FlavorManager;
 import bupt.openstack.nova.api.HypervisorManager;
@@ -24,7 +25,7 @@ import bupt.openstack.nova.api.v2.Servers;
 import bupt.openstack.nova.api.v2.Services;
 import bupt.openstack.nova.api.v2.Versions;
 
-public class Nova {
+public class Nova extends Client {
 	public final FlavorManager flavors;
 	public final HypervisorManager hypervisors;
 	public final ServiceManager services;
@@ -36,9 +37,8 @@ public class Nova {
 	public final AggregateManager aggregates;
 	public final SecurityGroupManager securityGroups;
 	public final ImageManager images;
-	private Authenticated credentical;
 	public Nova(Authenticated credentical) {
-		this.credentical = credentical;
+		super(credentical);
 		flavors = new Flavors(credentical);
 		hypervisors = new Hypervisors(credentical);
 		services = new Services(credentical);
@@ -50,8 +50,5 @@ public class Nova {
 		aggregates = new Aggregates(credentical);
 		securityGroups = new SecurityGroups(credentical);
 		images = new Images(credentical);
-	}
-	public void setRegion(String region) {
-		credentical.setWorkRegion(region);
 	}
 }
