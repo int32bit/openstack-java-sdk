@@ -54,6 +54,7 @@ public class Subnet extends AbstractEntity {
 	public Subnet() {
 		super();
 		this.enableDHCP = true;
+		this.ipVersion = "4";
 	}
 	
 	public boolean isEnableDHCP() {

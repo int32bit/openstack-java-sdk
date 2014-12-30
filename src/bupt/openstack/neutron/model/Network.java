@@ -98,5 +98,7 @@ public class Network extends AbstractEntity {
 	public void setSegmentationId(String segmentationId) {
 		this.segmentationId = segmentationId;
 	}
-	
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

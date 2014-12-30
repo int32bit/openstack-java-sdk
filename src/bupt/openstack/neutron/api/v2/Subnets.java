@@ -1,6 +1,7 @@
 package bupt.openstack.neutron.api.v2;
 
 import java.util.List;
+import java.util.Objects;
 
 import bupt.openstack.authentication.Authenticated;
 import bupt.openstack.common.OperationException;
@@ -21,5 +22,24 @@ public class Subnets extends AbstractManager<Subnet> implements SubnetManager {
 	public Subnet get(String id) throws OperationException {
 		return super._get(PREFIX + "/subnets/" + id + ".json");
 	}
-
+	@Override
+	public Subnet create(Subnet subnet) throws OperationException {
+		return super._create(PREFIX + "/subnets.json", subnet);
+	}
+	@Override
+	public Subnet update(Subnet subnet) throws OperationException {
+		Objects.requireNonNull(subnet);
+		Objects.requireNonNull(subnet.getId());
+		String id = subnet.getId();
+		// To ignore read-only attribute  
+		subnet.setCIDR(null);
+		subnet.setId(null);
+		subnet.setNetworkId(null);
+		subnet.setTenantId(null);
+		return super._update(PREFIX + "/subnets/" + id + ".json", subnet);
+	}
+	@Override
+	public void delete(String id) throws OperationException {
+		super._delete(PREFIX + "/subnets/" + id + ".json");
+	}
 }

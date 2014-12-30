@@ -1,5 +1,6 @@
 package bupt.openstack.neutron.api.v2;
 import java.util.List;
+import java.util.Objects;
 
 import bupt.openstack.authentication.Authenticated;
 import bupt.openstack.common.OperationException;
@@ -26,4 +27,22 @@ public class Networks extends AbstractManager<Network> implements NetworkManager
 	public Network get(String id) throws OperationException {
 		return super._get(PREFIX + "/networks/" + id + ".json");
 	}
+	@Override
+	public List<Network> listExternal() throws OperationException {
+		String url = PREFIX + "/networks.json?router%3Aexternal=True";
+		return _list(url);
+	}
+	@Override
+	public Network update(Network network) throws OperationException {
+		Objects.requireNonNull(network);
+		Objects.requireNonNull(network.getId());
+		String id = network.getId();
+		Network t = new Network();
+		t.setName(network.getName());
+		t.setExternal(network.isExternal());
+		t.setShared(network.isShared());
+		t.setUp(network.isUp());
+		return super._update(PREFIX + "/networks/" + id + ".json", t.toJSONObject(false));
+	}
+	
 }
