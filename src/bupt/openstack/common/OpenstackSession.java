@@ -103,8 +103,9 @@ public class OpenstackSession {
 	 * @param password 密码
 	 * @return 该帐户的session实例
 	 * @throws OperationException
+	 * @throws TenantNotFoundException 
 	 */
-	public static OpenstackSession getSession(String username, String password) throws OperationException {
+	public static OpenstackSession getSession(String username, String password) throws OperationException, TenantNotFoundException {
 		Secret secret = new Secret();
 		secret.setUsername(username);
 		secret.setPassword(password);
@@ -117,7 +118,7 @@ public class OpenstackSession {
 			if (value == null) {
 				List<String> tenants = DataBaseAccessor.getTenants(username);
 				if (tenants.size() < 1) {
-					throw new RuntimeException("Failed to get a valid tenant for " + username);
+					throw new TenantNotFoundException("Failed to get a valid tenant for " + username);
 				} else {
 					secret.setTenantName(tenants.get(0));
 				}
@@ -153,8 +154,9 @@ public class OpenstackSession {
 	 * @param token token
 	 * @return session实例
 	 * @throws OperationException
+	 * @throws TenantNotFoundException 
 	 */
-	public static OpenstackSession getSession(String token) throws OperationException {
+	public static OpenstackSession getSession(String token) throws OperationException, TenantNotFoundException {
 		Secret secret = new Secret();
 		secret.setToken(token);
 		String value = Configure.getConfigure().getString("TenantName");
@@ -169,7 +171,7 @@ public class OpenstackSession {
 			if (value == null) {
 				List<String> tenants = DataBaseAccessor.getTenants("admin");
 				if (tenants.size() < 1) {
-					throw new RuntimeException("Failed to get a valid tenant for admin.");
+					throw new TenantNotFoundException("Failed to get a valid tenant for admin.");
 				} else {
 					secret.setTenantName(tenants.get(0));
 				}
