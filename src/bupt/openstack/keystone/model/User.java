@@ -76,6 +76,9 @@ public class User extends AbstractEntity {
 	public void setTenantId(String tenantId) {
 		this.tenantId = tenantId;
 	}
+	public String getTenantId() {
+		return this.tenantId;
+	}
 	@Override
 	public boolean isValid() {
 		return true;
