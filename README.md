@@ -232,7 +232,4 @@ public class FlavorCachedManager implements FlavorManager {
 Copyright
 =========
 
-1. 本项目的所有代码任何人都可以下载使用并且修改和重构!
-2. 任何人所做的修改必须继续公开到github，并且及时通知我！
-3. 对我的代码有任何意见，均可以通过邮箱告诉我！
-4. 任何人使用此代码均需保留此版权, 并且声明此原始代码出处！
+The MIT License (MIT)
