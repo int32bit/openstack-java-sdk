@@ -11,7 +11,20 @@ About this project
 How to use ?
 ==========
 
+首先使用maven构建本项目：
+
+```bash
+mvn package
+```
+
+如果需要把依赖包一块打进一个整体包，使用一下命令：
+
+```
+mvn assembly:assembly
+```
+
 我学习了openstack官方python库的设计架构，尽力做到调用简单，方便.以下是demo：
+
 ```java
 	OpenstackSession session = OpenstackSession.getSession("username", "password");// get session
 	Nova nova = session.getNovaClient(); // get nova client
