@@ -23,6 +23,7 @@ mvn package
 mvn assembly:assembly
 ```
 
+项目运行需要配置文件，配置文件路径由系统变量`OPENSTACK_CONF_PATH`指定，默认为`/etc/openstack`,参考[配置文件说明](etc)
 我学习了openstack官方python库的设计架构，尽力做到调用简单，方便.以下是demo：
 
 ```java
